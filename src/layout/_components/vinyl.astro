@@ -1,0 +1,122 @@
+---
+import { Image } from "astro:assets"
+import cd from "@/assets/cd.jpg"
+import cd_inner from "@/assets/cd_inner.jpg"
+
+const primaryText = [
+   "FLY ME TO THE MOON",
+   "FLY ME TO THE MOON",
+   "FLY ME TO THE MOON",
+]
+---
+
+<div>
+   <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 350 350"
+      id="text-primary"
+      class="mx-auto translate-y-10 size-[360px] md:size-[500px] overflow-visible"
+   >
+      <defs>
+         <path id="def-1"></path>
+      </defs>
+      <path
+         id="path-1"
+         fill="none"
+         stroke="none"
+         d="M -393 405 C -53 405 -73 5 177 5 C 427 5 407 405 747 405"
+         class="md:hidden"
+      >
+      </path>
+      <path
+         id="path-1"
+         fill="none"
+         stroke="none"
+         d="M -351 251 C 20 252 -59 0 175 0 C 401 -4 358 254 718 256"
+         class="max-md:hidden"
+      >
+      </path>
+      <text class="font-bold text-4xl">
+         {
+            primaryText.map((text, index) => (
+               <textPath
+                  id={`text-${index + 1}`}
+                  href="#def-1"
+                  startOffset="-25%"
+               >
+                  {text}
+               </textPath>
+            ))
+         }
+      </text>
+   </svg>
+
+   <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="600px"
+      height="600px"
+      viewBox="0 0 350 350"
+      id="text-secondary"
+   >
+      <defs>
+         <path id="def-2"></path>
+      </defs>
+      <path
+         fill="none"
+         stroke="none"
+         id="path-2"
+         d="M -393 60 C -53 60 -70 365 180 365 C 421 352 407 60 725 56"
+      >
+      </path>
+      <text x="50%" y="50%" dominant-baseline="end" text-anchor="middle">
+         <textPath id="Text5" href="#def-2" startOffset="37%">
+            <!-- text here -->
+         </textPath>
+      </text>
+   </svg>
+
+   <div
+      class="mx-auto absolute top-20 z-[-1] left-1/2 -translate-x-1/2 animate-spin w-[360px] md:w-[500px]"
+   >
+      <Image src={cd} class="" width={500} height={500} alt="" />
+      <Image
+         src={cd_inner}
+         width={160}
+         height={160}
+         alt=""
+         class="m-auto rounded-full w-[115px] md:w-[159px] absolute inset-0"
+      />
+   </div>
+</div>
+
+<script>
+   import { gsap } from "gsap"
+   import { MotionPathPlugin } from "gsap/MotionPathPlugin"
+
+   gsap.registerPlugin(MotionPathPlugin)
+
+   const path1 = [...document.querySelectorAll("#path-1")]
+      ?.find((el) => window.getComputedStyle(el).display !== "none")
+      ?.getAttribute("d")
+
+   const path2 = document.getElementById("path-2")?.getAttribute("d")
+
+   if (path1 && path2) {
+      document.getElementById("def-1")?.setAttribute("d", path1)
+      document.getElementById("def-2")?.setAttribute("d", path2)
+   }
+
+   const animateText = (selector: gsap.TweenTarget, delay: number) => {
+      gsap.to(selector, {
+         attr: { startOffset: "100%" },
+         ease: "linear",
+         duration: 14,
+         repeat: -1,
+         delay: delay,
+      })
+   }
+
+   animateText("#text-1", 0)
+   animateText("#text-2", 5)
+   animateText("#text-3", 10)
+</script>

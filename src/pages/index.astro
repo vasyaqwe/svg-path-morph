@@ -1,0 +1,224 @@
+---
+import Layout from "@/layout/base.astro";
+import ArrowDown from "@/ui/components/arrow-down.astro";
+import ChevronRight from "@/ui/components/chevron-right.astro";
+import ScrambleText from "./_components/scramble-text.astro";
+import Chart from "@/pages/_components/chart.astro";
+
+const tableOfContents = [
+  {
+    title: "Intro",
+    href: "intro",
+  },
+  {
+    title: "Lorem ipsum dolor sit today",
+    href: "lorem ipsum",
+  },
+  {
+    title: "Lorem ipsum",
+    href: "lorem ipsum",
+  },
+  {
+    title: "Resources",
+    href: "resources",
+  },
+];
+---
+
+<Layout>
+  <p
+    class="font-mono flex max-sm:flex-col-reverse xs:gap-1.5 xs:text-sm sm:text-base text-[0.81rem] sm:items-center border-t opacity-90 border-border sm:mt-7 mt-4 pt-4 uppercase"
+  >
+    <ScrambleText text="Some important text here" />
+    <span class="sm:ml-auto">• Something here</span>
+  </p>
+  <section class="mt-8 md:mt-14">
+    <div class="flex max-sm:flex-col-reverse max-sm:gap-5 sm:items-center">
+      <h1 class="text-3xl md:text-5xl font-bold" style="text-wrap: stable;">
+        Lorem ipsum dolor sit amet consectetur.
+      </h1>
+      <!-- <Image
+        src={image}
+        alt=""
+        class={"rounded-2xl max-w-[120px] md:max-w-[130px]"}
+      /> -->
+    </div>
+    <div class="divide-y divide-border mt-8">
+      {
+        tableOfContents.map((item) => (
+          <a
+            href={`#${item.href}`}
+            class="py-3 font-semibold hover:before:bg-tertiary isolate before:absolute before:inset-[-2px_-14px_-2px_-14px] w-full relative before:rounded-xl inline-flex items-center text-lg"
+          >
+            <span class="inline-flex items-center gap-4 z-[1]">
+              <span class="size-7 text-background bg-foreground rounded-full grid place-items-center">
+                <ArrowDown />
+              </span>
+              {item.title}
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+  <section
+    id={tableOfContents[0].href}
+    class="md:grid grid-cols-[30%_1fr] gap-10 mt-16 md:mt-24"
+  >
+    <div class="py-4 md:pb-0 md:pt-6 border-t border-border">
+      <h2 class="text-lg font-semibold opacity-80">
+        {tableOfContents[0].title}
+      </h2>
+    </div>
+    <div class="pt-4 md:pt-6 border-t border-border">
+      <h3 class="font-semibold text-xl mb-6">
+        Lorem ipsum dolor sit amet consectetur adipisicing.
+      </h3>
+      <p class="opacity-80">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt ex et
+        inventore nesciunt pariatur, esse adipisci eaque sit molestiae
+        dignissimos?
+      </p>
+    </div>
+  </section>
+  <section
+    id={tableOfContents[1].href}
+    class="md:grid grid-cols-[30%_1fr] gap-10 mt-16 md:mt-24"
+  >
+    <div class="py-4 md:pb-0 md:pt-6 border-t border-border">
+      <h2 class="text-lg font-semibold opacity-80">
+        {tableOfContents[1].title}
+      </h2>
+    </div>
+    <div class="pt-4 md:pt-6 border-t border-border">
+      <h3 class="font-semibold text-xl mb-2">
+        Lorem ipsum dolor sit amet consectetur:
+      </h3>
+      <ul class="">
+        <li class="py-4 border-b border-dashed">
+          <span class="font-semibold">Lorem ipsum dolor sit amet.</span>
+          <br />
+          <span class="opacity-80">
+            Lorem ipsum dolor sit, amet consectetur adipisicing.
+          </span>
+        </li>
+        <li class="py-4 border-b border-dashed">
+          <span class="font-semibold">Lorem ipsum dolor sit amet.</span>
+          <br />
+          <span class="opacity-80">
+            Lorem ipsum dolor sit, amet consectetur adipisicing.
+          </span>
+        </li>
+
+        <li class="pt-4 mt-4">
+          <span class="font-semibold">Lorem ipsum dolor sit amet.</span>
+          <span class="opacity-80">
+            Lorem ipsum dolor sit, amet consectetur adipisicing. Lorem ipsum
+            dolor sit, amet consectetur adipisicing.
+          </span>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section
+    id={tableOfContents[2].href}
+    class="md:grid grid-cols-[30%_1fr] gap-10 mt-16 md:mt-24"
+  >
+    <div class="py-4 md:pb-0 md:pt-6 border-t border-border">
+      <h2 class="text-lg font-semibold opacity-80">
+        {tableOfContents[2].title}
+      </h2>
+      <div class="mt-[26px]"><Chart /></div>
+    </div>
+    <div class="pt-4 md:pt-6 border-t border-border">
+      <h3 class="font-semibold text-xl mb-2">
+        Lorem ipsum dolor sit amet consectetur
+      </h3>
+      <ul class="mt-1">
+        <li
+          class="py-[17px] border-b border-dashed grid items-center grid-cols-[1.25rem_3rem_1fr]"
+        >
+          <span class="bg-gray-600 size-3 rounded-sm"></span>
+          <span class="font-semibold">75%</span>
+          <span>Lorem ipsum dolor.</span>
+        </li>
+        <li
+          class="py-[17px] border-b border-dashed grid grid-cols-[1.25rem_3rem_1fr] items-center"
+        >
+          <span class="bg-gray-500 size-3 rounded-sm"></span>
+          <span class="font-semibold">15%</span>
+          <span>Lorem ipsum dolor.</span>
+        </li>
+        <li
+          class="py-[17px] border-b border-dashed grid grid-cols-[1.25rem_3rem_1fr] items-center"
+        >
+          <span class="bg-gray-400 size-3 rounded-sm"></span>
+          <span class="font-semibold">10%</span>
+          <span>Lorem ipsum dolor.</span>
+        </li>
+      </ul>
+      <p class="opacity-70 text-xs mt-5">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat,
+        dolores!
+      </p>
+    </div>
+  </section>
+  <section
+    id={tableOfContents[3].href}
+    class="md:grid grid-cols-[30%_1fr] gap-10 mt-16 md:mt-24"
+  >
+    <div class="py-4 md:pb-0 md:pt-6 border-t border-border">
+      <h2 class="text-lg font-semibold opacity-80">
+        {tableOfContents[3].title}
+      </h2>
+    </div>
+    <div class="py-4 space-y-6 md:py-6 border-t border-border">
+      <div class="w-full">
+        <a
+          href="/"
+          class="border-b flex items-center border-dashed py-3 hover:before:bg-tertiary isolate before:absolute before:inset-[-2px_-14px_-2px_-14px] w-full relative before:rounded-xl"
+        >
+          <span class="font-semibold z-[1] relative">Lorem ipsum</span>
+          <span class="ml-auto opacity-60"><ChevronRight /></span>
+        </a>
+        <a
+          href="/"
+          class="border-b flex items-center border-dashed py-3 hover:before:bg-tertiary isolate before:absolute before:inset-[-2px_-14px_-2px_-14px] w-full relative before:rounded-xl"
+        >
+          <span class="font-semibold z-[1] relative">Lorem ipsum</span>
+          <span class="ml-auto opacity-60"><ChevronRight /></span>
+        </a>
+        <a
+          href="/"
+          class="flex items-center py-3 hover:before:bg-tertiary isolate before:absolute before:inset-[-2px_-14px_-2px_-14px] w-full relative before:rounded-xl"
+        >
+          <span class="font-semibold z-[1] relative">Lorem ipsum</span>
+          <span class="ml-auto opacity-60"><ChevronRight /></span>
+        </a>
+      </div>
+      <div class="w-full">
+        <a
+          href="/"
+          class="border-b flex items-center border-dashed py-3 hover:before:bg-tertiary isolate before:absolute before:inset-[-2px_-14px_-2px_-14px] w-full relative before:rounded-xl"
+        >
+          <span class="font-semibold z-[1] relative">Lorem ipsum</span>
+          <span class="ml-auto opacity-60"><ChevronRight /></span>
+        </a>
+        <a
+          href="/"
+          class="border-b flex items-center border-dashed py-3 hover:before:bg-tertiary isolate before:absolute before:inset-[-2px_-14px_-2px_-14px] w-full relative before:rounded-xl"
+        >
+          <span class="font-semibold z-[1] relative">Lorem ipsum</span>
+          <span class="ml-auto opacity-60"><ChevronRight /></span>
+        </a>
+        <a
+          href="/"
+          class="flex items-center py-3 hover:before:bg-tertiary isolate before:absolute before:inset-[-2px_-14px_-2px_-14px] w-full relative before:rounded-xl"
+        >
+          <span class="font-semibold z-[1] relative">Lorem ipsum</span>
+          <span class="ml-auto opacity-60"><ChevronRight /></span>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

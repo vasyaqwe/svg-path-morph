@@ -1,0 +1,72 @@
+---
+const {
+   text = "",
+   duration = 1,
+   speed = 0.03,
+   characterSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
+   className = "",
+} = Astro.props
+---
+
+<span class={className}>
+   <span id="scramble-text" aria-hidden="true">
+      {text}
+   </span>
+   <span class="sr-only">
+      {text}
+   </span>
+</span>
+
+<script
+   is:inline
+   define:vars={{
+      originalText: text,
+      durationProp: duration,
+      speedProp: speed,
+      characterSetProp: characterSet,
+   }}
+>
+   ;(function () {
+      const textElement = document.getElementById("scramble-text")
+      const text = originalText
+      const duration = durationProp
+      const speed = speedProp
+      const characterSet = characterSetProp
+
+      function scrambleText() {
+         const steps = duration / speed
+         let step = 0
+
+         const interval = setInterval(() => {
+            let scrambled = ""
+            const progress = step / steps
+
+            for (let i = 0; i < text.length; i++) {
+               if (text[i] === " ") {
+                  scrambled += " "
+                  continue
+               }
+
+               if (progress * text.length > i) {
+                  scrambled += text[i]
+               } else {
+                  scrambled +=
+                     characterSet[
+                        Math.floor(Math.random() * characterSet.length)
+                     ]
+               }
+            }
+
+            textElement.textContent = scrambled
+            step++
+
+            if (step > steps) {
+               clearInterval(interval)
+               textElement.textContent = text
+            }
+         }, speed * 1000)
+      }
+
+      scrambleText()
+   })()
+</script>

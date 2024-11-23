@@ -1,0 +1,163 @@
+---
+import "@/styles/globals.css";
+import Vinyl from "./_components/vinyl.astro";
+
+const title = Astro.props.title ?? "Title";
+const description = Astro.props.description ?? "Description";
+
+type Props = {
+  title?: string;
+  description?: string;
+};
+
+const url = "https://";
+---
+
+<html
+  lang="en"
+  class="font-primary leading-5 antialiased scroll-pt-7 overflow-y-scroll"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta property="description" content={description} />
+    <meta property="og:type" content="website" />
+    <!-- <meta property="og:url" content={url} /> -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <!-- <meta
+      property="og:image"
+      content="https://www.vasyldev.cc/images/og.png" 
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta
+      property="twitter:image"
+      content="https://www.vasyldev.cc/images/twitter.png"
+    /> -->
+    <!-- <link rel="sitemap" href="/sitemap-index.xml" /> -->
+    <link rel="icon" type="image" href="/favicon.ico" />
+    <style>
+      @font-face {
+        font-family: "sans";
+        src: url("/font/sans.ttf") format("truetype");
+        font-display: swap;
+        font-style: normal;
+        font-weight: 500 700;
+      }
+      @font-face {
+        font-family: "geist_mono_regular";
+        src: url("/font/geist_mono_regular.ttf") format("truetype");
+        font-display: swap;
+        font-style: normal;
+        font-weight: 400;
+      }
+    </style>
+    <link
+      rel="preload"
+      href="/font/sans.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/font/geist_mono_regular.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body
+    class="pt-4 text-base font-medium bg-background text-foreground grid min-h-svh grid-rows-[auto_1fr_auto]"
+  >
+    <header class="container flex items-center justify-between pb-4">
+      <a href={"/"} aria-label="Home" class="underline">
+        <svg
+          class="size-7 opacity-85"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M13.1883 2.14072L13.2191 2.16014C15.1601 3.38719 17.0314 3.81404 18.4241 2.83289C18.7293 2.61782 19.129 2.59076 19.4605 2.7627C19.7919 2.93465 20 3.27696 20 3.65038C20 6.11264 18.532 8.23187 16.4263 9.16877C15.4057 9.62297 14.4745 9.50847 13.5795 9.08607C12.4827 8.56837 11.2856 7.79223 10 6.78052V14.5C10 17.2614 7.76142 19.5 5 19.5C2.23858 19.5 0 17.2614 0 14.5C0 11.7385 2.23858 9.49997 5 9.49997C6.12561 9.49997 7.16434 9.87187 8 10.4996V4.59669C7.99999 3.78908 7.99998 3.13081 8.0327 2.6417C8.0495 2.39178 8.077 2.14449 8.1301 1.92127C8.1803 1.7102 8.2752 1.42193 8.4924 1.17445C8.6312 1.01639 8.8049 0.851841 9.0403 0.724871C9.2753 0.598161 9.508 0.543211 9.7157 0.513591C10.059 0.464621 10.3709 0.558121 10.5723 0.632971C10.7959 0.716091 11.0348 0.836191 11.2789 0.971341C11.7603 1.23796 12.3947 1.63898 13.1883 2.14072Z"
+            fill="currentColor"
+          >
+          </path>
+        </svg>
+      </a>
+      <nav>
+        <ul class="flex items-center gap-2">
+          <li>
+            <a
+              class="bg-secondary size-8 rounded-lg transition-all inline-flex items-center hover:brightness-[97%] justify-center"
+              aria-label="Twitter (X)"
+              href="/"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                class="size-[18px]"
+                color="currentColor"
+                fill="none"
+              >
+                <path
+                  d="M3 21L10.5484 13.4516M21 3L13.4516 10.5484M13.4516 10.5484L8 3H3L10.5484 13.4516M13.4516 10.5484L21 21H16L10.5484 13.4516"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                </path>
+              </svg>
+            </a>
+          </li>
+          <!-- <li>
+            <a
+              class="bg-secondary size-8 rounded-lg transition-all inline-flex items-center hover:brightness-[97%] justify-center"
+              aria-label="Telegram"
+              href="/"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                class="size-[18px]"
+                color="currentColor"
+                fill="none"
+              >
+                <path
+                  d="M11.9854 15.4083L15.2268 19.0936C16.4277 20.4589 17.0282 21.1416 17.6567 20.9754C18.2852 20.8092 18.5008 19.9108 18.9318 18.1138L21.3229 8.1459C21.9868 5.37832 22.3187 3.99454 21.5808 3.312C20.843 2.62947 19.564 3.13725 17.0061 4.15282L5.13876 8.86449C3.09293 9.67674 2.07001 10.0829 2.00507 10.7808C1.99842 10.8522 1.99831 10.9241 2.00474 10.9955C2.06754 11.6937 3.08921 12.1033 5.13255 12.9223C6.05838 13.2934 6.5213 13.479 6.8532 13.8344C6.89052 13.8743 6.9264 13.9157 6.96078 13.9584C7.26658 14.3384 7.39709 14.8371 7.65808 15.8344L8.14653 17.701C8.4005 18.6715 8.52749 19.1568 8.86008 19.223C9.19267 19.2891 9.48225 18.8867 10.0614 18.0819L11.9854 15.4083ZM11.9854 15.4083L11.6676 15.0771C11.3059 14.7001 11.1251 14.5117 11.1251 14.2775C11.1251 14.0433 11.3059 13.8548 11.6676 13.4778L15.2406 9.75409"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                </path>
+              </svg>
+            </a>
+          </li> -->
+          <li>
+            <a
+              class="bg-secondary h-8 rounded-lg justify-center transition-all inline-flex items-center hover:brightness-[97%] px-3"
+              href="/"
+            >
+              Button here
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container">
+      <slot />
+    </main>
+    <footer
+      class="relative mt-16 md:mt-36 h-[280px] md:h-[345px] overflow-hidden"
+    >
+      <Vinyl />
+    </footer>
+  </body>
+</html>

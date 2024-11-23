@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme default {
+   --color-background: #ffffff;
+   --color-foreground: #2a2c32;
+   --color-primary: #0a0a0b;
+   --color-secondary: #eeedef;
+   --color-tertiary: #f8f8f9;
+   --color-border: #e9e8ea;
+   --color-border-secondary: #d9d7da;
+
+   --font-primary: "sans", sans-serif;
+   --font-mono: "geist_mono_regular", monospace;
+
+   --text-xs: 0.8rem;
+   --text-base: 0.9475rem;
+   --text-lg: 0.975rem;
+   --text-5xl: 2.6rem;
+   --text-5xl--line-height: 1.2;
+
+   --breakpoint-xs: 402px;
+
+   --animate-spin: spin 8s linear infinite;
+
+   @keyframes spin {
+      from {
+         transform: rotate(0deg);
+      }
+      to {
+         transform: rotate(360deg);
+      }
+   }
+}
+
+@utility container {
+   margin-inline: auto;
+   padding-inline: 0.975rem;
+   max-width: 882px;
+}
+@utility border-dashed {
+   border: none;
+   background-image: linear-gradient(
+      to right,
+      var(--color-border-secondary) 60%,
+      transparent 0%
+   );
+   background-size: 13px 1px;
+   background-repeat: repeat-x;
+}
+@utility border-b {
+   background-position: bottom;
+}
+@utility border-t {
+   background-position: top;
+}
+.hide-scrollbar {
+   -ms-overflow-style: none;
+   scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+   display: none !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}
+
+input[type="number"] {
+   -moz-appearance: textfield;
+   appearance: textfield;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+   text-wrap: balance;
+}
+
+p {
+   max-width: var(--width-prose);
+   text-wrap: pretty;
+}
