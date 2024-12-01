@@ -1,13 +1,13 @@
 ---
-import { Image } from "astro:assets"
-import cd from "@/assets/cd.jpg"
-import cd_inner from "@/assets/cd_inner.jpg"
+import { Image } from "astro:assets";
+import cd from "@/assets/cd.png";
+import cd_inner from "@/assets/cd_inner.jpg";
 
 const primaryText = [
    "FLY ME TO THE MOON",
    "FLY ME TO THE MOON",
    "FLY ME TO THE MOON",
-]
+];
 ---
 
 <div>
@@ -90,20 +90,20 @@ const primaryText = [
 </div>
 
 <script>
-   import { gsap } from "gsap"
-   import { MotionPathPlugin } from "gsap/MotionPathPlugin"
+   import { gsap } from "gsap";
+   import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 
-   gsap.registerPlugin(MotionPathPlugin)
+   gsap.registerPlugin(MotionPathPlugin);
 
    const path1 = [...document.querySelectorAll("#path-1")]
       ?.find((el) => window.getComputedStyle(el).display !== "none")
-      ?.getAttribute("d")
+      ?.getAttribute("d");
 
-   const path2 = document.getElementById("path-2")?.getAttribute("d")
+   const path2 = document.getElementById("path-2")?.getAttribute("d");
 
    if (path1 && path2) {
-      document.getElementById("def-1")?.setAttribute("d", path1)
-      document.getElementById("def-2")?.setAttribute("d", path2)
+      document.getElementById("def-1")?.setAttribute("d", path1);
+      document.getElementById("def-2")?.setAttribute("d", path2);
    }
 
    const animateText = (selector: gsap.TweenTarget, delay: number) => {
@@ -113,10 +113,10 @@ const primaryText = [
          duration: 14,
          repeat: -1,
          delay: delay,
-      })
-   }
+      });
+   };
 
-   animateText("#text-1", 0)
-   animateText("#text-2", 5)
-   animateText("#text-3", 10)
+   animateText("#text-1", 0);
+   animateText("#text-2", 5);
+   animateText("#text-3", 10);
 </script>
